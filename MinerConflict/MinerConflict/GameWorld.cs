@@ -12,6 +12,8 @@ namespace MinerConflict
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        //Dette er en kode-kommentar
+
         public GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
