@@ -9,12 +9,28 @@ namespace MinerConflict
     /// </summary>
     public class GameWorld : Game
     {
+        private static GameWorld instance;
+        public static GameWorld Instance
+        {
+            get
+            {
+                if(instance == null)
+                {
+                    instance = new GameWorld();
+                }
+
+                return instance;
+            }
+        }
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+
+
         //Dette er en kode-kommentar
 
-        public GameWorld()
+        private GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
