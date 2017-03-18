@@ -28,6 +28,17 @@ namespace MinerConflict
                 minerUnitTexture = content.Load<Texture2D>("Replace");
                 mineBuildingTexture = content.Load<Texture2D>("Replace");
             }
+
+            /*
+            Sprite Miner Graphics Infor
+                Mining:
+                10 frames
+                48x65
+            
+                Walk:
+                skip 4, 6 frames
+                48x51 (Y might be wrong...)
+            */
         }
     }
 }
