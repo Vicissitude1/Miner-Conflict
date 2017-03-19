@@ -26,7 +26,7 @@ namespace MinerConflict
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-
+        public double cycles { get; private set; }
 
         //Dette er en kode-kommentar
 
@@ -84,6 +84,10 @@ namespace MinerConflict
                 Exit();
 
             // TODO: Add your update logic here
+
+            
+
+            cycles++;
 
             base.Update(gameTime);
         }

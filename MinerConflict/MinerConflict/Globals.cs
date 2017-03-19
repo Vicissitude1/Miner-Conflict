@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace MinerConflict
 {
+    enum DIRECTION { Left, Right }
+
     public static class Globals
     {
         public static class LayerD
