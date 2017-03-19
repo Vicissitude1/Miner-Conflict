@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MinerConflict.Builders;
 using System.Collections.Generic;
 
 namespace MinerConflict
@@ -52,6 +53,7 @@ namespace MinerConflict
             // TODO: Add your initialization logic here
             gameObjects = new List<GameObject>();
 
+            
 
             base.Initialize();
         }
@@ -67,6 +69,9 @@ namespace MinerConflict
 
             // TODO: use this.Content to load your game content here
             Globals.Graphics.LoadAllGraphics(this.Content);
+
+            Director dir = new Director(new BaseBuilder());
+            gameObjects.Add(dir.Construct(new Vector2(20)));
         }
 
         /// <summary>
@@ -106,6 +111,15 @@ namespace MinerConflict
             GraphicsDevice.Clear(Color.LawnGreen);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+            foreach (GameObject go in gameObjects)
+            {
+                if (go.GetComponent("SpriteRenderer") is SpriteRenderer)
+                {
+                    (go.GetComponent("SpriteRenderer") as SpriteRenderer).Draw(spriteBatch);
+                }
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

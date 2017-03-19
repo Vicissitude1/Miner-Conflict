@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,12 @@ namespace MinerConflict
         public float scaleFactor { get; set; }
         public Transform transform { get; private set; }
 
-        public GameObject()
+        public GameObject(Vector2 position)
         {
             //Initialize
             components = new List<Component>();
+            transform = new Transform(this, position);
+            scaleFactor = 1f; //This need to be changed
         }
 
         public void AddComponent(Component component)

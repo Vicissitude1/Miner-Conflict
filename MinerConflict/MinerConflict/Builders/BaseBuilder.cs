@@ -12,7 +12,7 @@ namespace MinerConflict.Builders
         private GameObject gameObject;
         public void Buildpart(Vector2 position)
         {
-            gameObject = new GameObject();
+            gameObject = new GameObject(position);
             gameObject.AddComponent(new SpriteRenderer(gameObject, Globals.Graphics.BaseBuildingTexture, 1f));
             gameObject.AddComponent(new Base(gameObject));
         }
