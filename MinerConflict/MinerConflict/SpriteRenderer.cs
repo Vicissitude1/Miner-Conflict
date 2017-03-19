@@ -34,6 +34,7 @@ namespace MinerConflict
             this.layer = layer;
             this.sprite = sprite;
             this.spriteEffect = SpriteEffects.None;
+            this.rectangle = sprite.Bounds;
 
         }
 

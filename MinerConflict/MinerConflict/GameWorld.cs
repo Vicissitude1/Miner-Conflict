@@ -28,6 +28,8 @@ namespace MinerConflict
 
         public double cycles { get; private set; }
 
+        public float deltaTime { get; private set; }
+
         //Dette er en kode-kommentar
 
         private GameWorld()
@@ -82,10 +84,10 @@ namespace MinerConflict
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             // TODO: Add your update logic here
 
-            
+
 
             cycles++;
 
