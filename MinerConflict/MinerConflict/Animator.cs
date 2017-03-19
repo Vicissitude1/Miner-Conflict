@@ -10,11 +10,11 @@ namespace MinerConflict
 {
     class Animator
     {
-        private SpriteRenderer spriteRendere;
+        private SpriteRenderer spriteRenderer;
         private int currentIndex;
         private float timeElapsed;
         private float fps;
-        private Rectangle[] reactangles;
+        private Rectangle[] rectangles;
         private string animationName;
 
         public Dictionary<string, Animation> Animations { get; set; }
@@ -24,6 +24,22 @@ namespace MinerConflict
             fps = 5;
             this.spriteRendere = (SpriteRenderer)gameObject.GetComponent("SpriteRendere");
             Animations = new Dictionary<string, Animation>();
+        }
+
+        public void Update()
+        {
+
+            timeElapsed += GameWorld.Instance.deltaTime;
+
+            currentIndex = (int)(timeElapsed * fps);
+
+            if (currentIndex > rectangles.Length - 1)
+            {
+                GameObject.OnAnimationDone(animationName);
+                timeElapsed = 0;
+                currentIndex = 0;
+            }
+            spriteRenderer.Rectangle = rectangles[currentIndex];
         }
     }
 }
