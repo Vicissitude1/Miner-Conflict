@@ -8,5 +8,9 @@ namespace MinerConflict
 {
     class Base:Component
     {
+        public Base(GameObject gameObject) : base(gameObject)
+        {
+
+        }
     }
 }
