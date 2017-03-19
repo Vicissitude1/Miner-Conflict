@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace MinerConflict
 {
-    class Animator
+    class Animator : Component
     {
         private SpriteRenderer spriteRenderer;
         private int currentIndex;
@@ -22,7 +22,7 @@ namespace MinerConflict
         public Animator(GameObject gameObject) : base(gameObject)
         {
             fps = 5;
-            this.spriteRendere = (SpriteRenderer)gameObject.GetComponent("SpriteRendere");
+            this.spriteRenderer = (SpriteRenderer)gameObject.GetComponent("SpriteRenderer");
             Animations = new Dictionary<string, Animation>();
         }
 
