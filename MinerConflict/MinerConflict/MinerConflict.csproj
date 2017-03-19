@@ -38,13 +38,19 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Base.cs" />
+    <Compile Include="Builders\MinerBuilder.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="IDrawable.cs" />
+    <Compile Include="Mine.cs" />
+    <Compile Include="Miner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Soldier.cs" />
+    <Compile Include="SpeedUpgrade.cs" />
     <Compile Include="SpriteRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
