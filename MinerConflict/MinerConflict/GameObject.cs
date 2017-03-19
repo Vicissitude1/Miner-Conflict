@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict
 {
-    class GameObject:Component
+    class GameObject:Component, IAnimateable
     {
         private List<Component> components;
         public float scaleFactor { get; set; }
@@ -26,6 +26,11 @@ namespace MinerConflict
         public Component GetComponent(string compName)
         {
             return components.Find(n => n.GetType().Name == compName);
+        }
+
+        public void OnAnimationDone(string animationName)
+        {
+            //FISK
         }
     }
 }
