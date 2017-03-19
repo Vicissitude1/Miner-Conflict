@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict
 {
-    class Base
+    class Base:Component
     {
     }
 }

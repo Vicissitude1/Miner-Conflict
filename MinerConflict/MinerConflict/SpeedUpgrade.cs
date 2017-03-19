@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict
 {
-    abstract class SpeedUpgrade
+    abstract class SpeedUpgrade:Component
     {
         public static float speed;
 
