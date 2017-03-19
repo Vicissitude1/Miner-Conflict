@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace MinerConflict
 {
@@ -30,7 +31,7 @@ namespace MinerConflict
 
         public float deltaTime { get; private set; }
 
-        //Dette er en kode-kommentar
+        private List<GameObject> gameObjects;
 
         private GameWorld()
         {
@@ -49,6 +50,8 @@ namespace MinerConflict
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            gameObjects = new List<GameObject>();
+
 
             base.Initialize();
         }

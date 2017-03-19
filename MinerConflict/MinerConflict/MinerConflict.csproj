@@ -41,13 +41,15 @@
     <Compile Include="Animation.cs" />
     <Compile Include="Animator.cs" />
     <Compile Include="Base.cs" />
+    <Compile Include="Builders\BaseBuilder.cs" />
+    <Compile Include="Interfaces\IBuilder.cs" />
     <Compile Include="Builders\MinerBuilder.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="Globals.cs" />
-    <Compile Include="IAnimateable.cs" />
-    <Compile Include="IDrawable.cs" />
+    <Compile Include="Interfaces\IAnimateable.cs" />
+    <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Miner.cs" />
     <Compile Include="Program.cs" />
