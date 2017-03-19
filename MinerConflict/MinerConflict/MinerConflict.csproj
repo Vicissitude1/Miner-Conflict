@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Animator.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="Builders\MinerBuilder.cs" />
     <Compile Include="Component.cs" />

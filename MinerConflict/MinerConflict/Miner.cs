@@ -11,7 +11,8 @@ namespace MinerConflict
         
         public Animator animator;
         public int health;
-        public Direction direction;
+        public DIRECTION direction;
+        private double cycles;
 
 
     }
