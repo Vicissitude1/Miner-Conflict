@@ -33,6 +33,8 @@ namespace MinerConflict
         private GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 512;
+            graphics.PreferredBackBufferWidth = 1536;
             Content.RootDirectory = "Content";
         }
 
@@ -59,6 +61,7 @@ namespace MinerConflict
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Globals.Graphics.LoadAllGraphics(this.Content);
         }
 
         /// <summary>
