@@ -8,7 +8,7 @@ namespace MinerConflict
 {
     class Component
     {
-        private GameObject gameObject;
+        public GameObject gameObject { get; private set; }
 
         /// <summary>
         /// Constructer for gameObjects

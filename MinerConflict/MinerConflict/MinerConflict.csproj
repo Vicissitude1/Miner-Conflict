@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Animation.cs" />
     <Compile Include="Animator.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="Builders\MinerBuilder.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Soldier.cs" />
     <Compile Include="SpeedUpgrade.cs" />
     <Compile Include="SpriteRenderer.cs" />
+    <Compile Include="Transform.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

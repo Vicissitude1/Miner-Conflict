@@ -9,6 +9,8 @@ namespace MinerConflict
     class GameObject:Component
     {
         private List<Component> components;
+        public float scaleFactor { get; set; }
+        public Transform transform { get; private set; }
 
         public GameObject()
         {
