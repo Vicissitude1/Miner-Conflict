@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 namespace MinerConflict.Builders
 {
     class MinerBuilder
-    { 
+    {
+        private GameObject gameObject;
+
+        public void BuildGameObject(Vector2 position)
+        {
+            gameObject = new GameObject();
+            gameObject.AddComponent(new SpriteRenderer(gameObject, "MinerUnit", 1));
+        }
     }
 }
