@@ -52,7 +52,7 @@
     <Compile Include="Globals.cs" />
     <Compile Include="Interfaces\IAnimateable.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
-    <Compile Include="Mine.cs" />
+    <Compile Include="GoldMine.cs" />
     <Compile Include="Miner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
