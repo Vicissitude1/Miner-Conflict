@@ -8,6 +8,9 @@ namespace MinerConflict
 {
     class Mine
     {
-        
+        public Mine(GameObject gameObject) : base(gameObject)
+        {
+
+        }
     }
 }
