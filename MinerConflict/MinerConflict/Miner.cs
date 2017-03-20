@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MinerConflict
 {
     class Miner : SpeedUpgrade
@@ -20,7 +21,14 @@ namespace MinerConflict
             this.health = health;
             this.collected = collected;
             
+
         }
+
+        public void Update()
+        {
+
+        }
+
 
 
     }
