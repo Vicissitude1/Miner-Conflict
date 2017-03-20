@@ -7,14 +7,20 @@ using System.Threading.Tasks;
 
 namespace MinerConflict.Builders
 {
-    class MinerBuilder
+    class MinerBuilder : IBuilder
     {
         private GameObject gameObject;
 
-        public void BuildGameObject(Vector2 position)
+        public void Buildpart(Vector2 position)
         {
-            gameObject = new GameObject();
-            gameObject.AddComponent(new SpriteRenderer(gameObject, "MinerUnit", 1));
+            gameObject = new GameObject(position);
+            gameObject.AddComponent(new SpriteRenderer(gameObject, Globals.Graphics.MinerUnitTexture, 1f, 0.6f));
+            gameObject.AddComponent(new Miner(50, 0));
+        }
+
+        public GameObject GetResult()
+        {
+            return gameObject;
         }
     }
 }
