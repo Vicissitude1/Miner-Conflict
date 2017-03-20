@@ -11,7 +11,6 @@ namespace MinerConflict
     class GameObject:Component, IAnimateable
     {
         private List<Component> components;
-        public float scaleFactor { get; set; }
         public Transform transform { get; private set; }
 
         public GameObject(Vector2 position)
@@ -19,7 +18,6 @@ namespace MinerConflict
             //Initialize
             components = new List<Component>();
             transform = new Transform(this, position);
-            scaleFactor = 1f; //This need to be changed
         }
 
         public void AddComponent(Component component)
