@@ -8,9 +8,14 @@ namespace MinerConflict
 {
     class GoldMine : Component
     {
-        public GoldMine(GameObject gameObject) : base(gameObject)
-        {
 
+        private int goldAmount;
+
+        public GoldMine(GameObject gameObject, int goldAmount) : base(gameObject)
+        {
+            this.goldAmount = goldAmount;
         }
+
+
     }
 }
