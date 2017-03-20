@@ -22,16 +22,19 @@ namespace MinerConflict
             private static Texture2D minerUnitTexture;
             private static Texture2D mineBuildingTexture;
             private static Texture2D baseBuildingTexture;
+            private static Texture2D pikemanUnitTexture;
 
             public static Texture2D MinerUnitTexture { get { return minerUnitTexture; } }
             public static Texture2D MineBuildingTexture { get { return mineBuildingTexture; } }
             public static Texture2D BaseBuildingTexture { get { return baseBuildingTexture; } }
+            public static Texture2D PikemanUnitTexture { get { return pikemanUnitTexture; } }
 
             public static void LoadAllGraphics(ContentManager content)
             {
                 minerUnitTexture = content.Load<Texture2D>("MinerUnit");
                 mineBuildingTexture = content.Load<Texture2D>("MineBuilding");
                 baseBuildingTexture = content.Load<Texture2D>("BaseBuilding");
+                pikemanUnitTexture = content.Load<Texture2D>("pikemanUnit");
             }
 
             /*

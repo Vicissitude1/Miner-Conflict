@@ -15,6 +15,7 @@ namespace MinerConflict
         private Texture2D sprite;
         private Vector2 offset;
         private Rectangle rectangle;
+        private float scaleFactor;
         public SpriteEffects spriteEffect { get; set; }
 
         public Rectangle Rectangle
@@ -29,18 +30,18 @@ namespace MinerConflict
             set { offset = value; }
         }
 
-        public SpriteRenderer(GameObject gameObject, Texture2D sprite, float layer) : base(gameObject)
+        public SpriteRenderer(GameObject gameObject, Texture2D sprite, float layer, float scaleFactor) : base(gameObject)
         {
             this.layer = layer;
             this.sprite = sprite;
             this.spriteEffect = SpriteEffects.None;
             this.rectangle = sprite.Bounds;
-
+            this.scaleFactor = scaleFactor;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, gameObject.transform.Position, rectangle, Color.White, 0, Vector2.Zero, gameObject.scaleFactor, spriteEffect, layer);
+            spriteBatch.Draw(sprite, gameObject.transform.Position, rectangle, Color.White, 0, Vector2.Zero, scaleFactor, spriteEffect, layer);
         }
     }
 }
