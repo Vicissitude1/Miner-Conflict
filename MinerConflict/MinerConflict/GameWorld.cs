@@ -72,6 +72,10 @@ namespace MinerConflict
 
             Director dir = new Director(new BaseBuilder());
             gameObjects.Add(dir.Construct(new Vector2(20)));
+
+            dir = new Director(new GoldMineBuilder());
+            gameObjects.Add(dir.Construct(new Vector2(20, 370)));
+            
         }
 
         /// <summary>

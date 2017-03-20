@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict.Builders
 {
-    class BaseBuilder:IBuilder
+    class BaseBuilder : IBuilder
     {
         private GameObject gameObject;
         public void Buildpart(Vector2 position)

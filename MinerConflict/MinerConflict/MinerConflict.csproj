@@ -42,6 +42,7 @@
     <Compile Include="Animator.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="Builders\BaseBuilder.cs" />
+    <Compile Include="Builders\GoldMineBuilder.cs" />
     <Compile Include="Director.cs" />
     <Compile Include="Interfaces\IBuilder.cs" />
     <Compile Include="Builders\MinerBuilder.cs" />
@@ -51,7 +52,7 @@
     <Compile Include="Globals.cs" />
     <Compile Include="Interfaces\IAnimateable.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
-    <Compile Include="Mine.cs" />
+    <Compile Include="GoldMine.cs" />
     <Compile Include="Miner.cs" />
     <Compile Include="Pikeman.cs" />
     <Compile Include="Program.cs" />
