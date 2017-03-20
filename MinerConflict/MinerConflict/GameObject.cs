@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict
 {
+    //nej
     class GameObject:Component, IAnimateable
     {
         private List<Component> components;
