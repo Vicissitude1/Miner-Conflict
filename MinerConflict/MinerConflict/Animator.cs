@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-
+using MinerConflict.Interfaces;
 
 namespace MinerConflict
 {
-    class Animator : Component
+    class Animator : Component, IUpdate
     {
         private SpriteRenderer spriteRenderer;
         private int currentIndex;
@@ -31,7 +31,7 @@ namespace MinerConflict
 
             timeElapsed += GameWorld.Instance.deltaTime;
 
-            currentIndex = (int)(timeElapsed * fps);
+            currentIndex += (int)(timeElapsed * fps);
 
             if (currentIndex > rectangles.Length - 1)
             {
