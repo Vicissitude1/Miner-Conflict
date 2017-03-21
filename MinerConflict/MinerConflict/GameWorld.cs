@@ -82,7 +82,7 @@ namespace MinerConflict
 
             foreach (GameObject obj in gameObjects)
             {
-                
+                obj.LoadContent(this.Content);
             }
         }
 
