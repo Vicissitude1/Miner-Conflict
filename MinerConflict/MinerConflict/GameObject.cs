@@ -20,6 +20,7 @@ namespace MinerConflict
         private delegate void updateDelegate();
         private List<updateDelegate> delegates;
         private event updateDelegate triggerUpdate;
+        private double cycles;
 
         public GameObject(Vector2 position)
         {
@@ -42,7 +43,7 @@ namespace MinerConflict
 
         public void OnAnimationDone(string animationName)
         {
-            //FISK
+        //monkey.
         }
 
         public void Update()
@@ -72,14 +73,18 @@ namespace MinerConflict
 
         private void ThreadUpdate()
         {
+            cycles = GameWorld.Instance.cycles;
             while (true)
             {
-                try
-                {
-                    triggerUpdate();
-                } catch
-                {
-                    break;
+                if (cycles < GameWorld.Instance.cycles)
+                    {
+                    try
+                    {
+                        triggerUpdate();
+                    } catch
+                    {
+                        break;
+                    }
                 }
             }
         }
