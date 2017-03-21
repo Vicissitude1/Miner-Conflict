@@ -54,6 +54,7 @@
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="GoldMine.cs" />
     <Compile Include="Miner.cs" />
+    <Compile Include="Pikeman.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Soldier.cs" />
