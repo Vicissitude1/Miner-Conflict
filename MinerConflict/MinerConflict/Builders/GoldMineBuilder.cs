@@ -16,7 +16,7 @@ namespace MinerConflict.Builders
         {
             gameObject = new GameObject(position);
             gameObject.AddComponent(new SpriteRenderer(gameObject, Globals.Graphics.MineBuildingTexture, 1f, 0.5f));
-            gameObject.AddComponent(new GoldMine(gameObject, 9001));
+            gameObject.AddComponent(new GoldMine(gameObject));
         }
 
         public GameObject GetResult()
