@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict
 {
+    //You are raider! Legendary!
     class GameObject:Component, IAnimateable, IUpdate
     {
         private List<Component> components;
@@ -42,7 +43,7 @@ namespace MinerConflict
 
         public void OnAnimationDone(string animationName)
         {
-            //FISK
+        //monkey.
         }
 
         public void Update()
