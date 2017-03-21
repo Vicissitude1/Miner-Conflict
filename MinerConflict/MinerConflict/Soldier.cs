@@ -14,5 +14,7 @@ namespace MinerConflict
         private double cycles;
         private int damege;
 
+
+
     }
 }

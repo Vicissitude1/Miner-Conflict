@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict
 {
-    //nej
+    //You are raider! Legendary!
     class GameObject:Component, IAnimateable, IUpdate
     {
         private List<Component> components;
