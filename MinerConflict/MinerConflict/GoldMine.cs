@@ -42,7 +42,7 @@ namespace MinerConflict
                     {
                         amount = 1;
                         Thread.Sleep(1500);
-                        goldAmount = -amount;
+                        goldAmount =- amount;
                         working = false;
 
                     }
@@ -50,7 +50,7 @@ namespace MinerConflict
                     {
 
                         Thread.Sleep(1500);
-                        goldAmount = -amount;
+                        goldAmount =- amount;
                         working = false;
 
 

@@ -41,5 +41,36 @@ namespace MinerConflict
             }
             spriteRenderer.Rectangle = rectangles[currentIndex];
         }
+
+        public void CreateAnimation(string name, Animation animation)
+        {
+            Animations.Add(name, animation);
+        }
+
+        public void PlayAnimation(string animationName)
+        {
+            if (this.animationName != animationName)
+            {
+                //set rectangle
+                this.rectangles = Animations[animationName].Rectangles;
+
+                //reset rectangle
+                this.spriteRenderer.Rectangle = rectangles[0];
+
+                //set offset
+                this.spriteRenderer.Offset = Animations[animationName].Offset;
+
+                //set animation name
+                this.animationName = animationName;
+
+                //set fps
+                this.fps = Animations[animationName].Fps;
+
+                //reset the animation
+                timeElapsed = 0;
+
+                currentIndex = 0;
+            }
+        }
     }
 }
