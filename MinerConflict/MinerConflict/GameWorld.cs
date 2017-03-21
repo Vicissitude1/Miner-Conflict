@@ -79,6 +79,11 @@ namespace MinerConflict
             dir = new Director(new MinerBuilder());
             gameObjects.Add(dir.Construct(new Vector2(20, 150)));
             
+
+            foreach (GameObject obj in gameObjects)
+            {
+                
+            }
         }
 
         /// <summary>
