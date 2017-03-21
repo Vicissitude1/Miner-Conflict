@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Content;
 
 namespace MinerConflict
 {
     //You are raider! Legendary!
-    class GameObject:Component, IAnimateable, IUpdate
+    class GameObject:Component, IAnimateable, IUpdate, ILoadeble
     {
         private List<Component> components;
         public Transform transform { get; private set; }
@@ -71,6 +72,8 @@ namespace MinerConflict
             }
         }
 
+        
+
         private void ThreadUpdate()
         {
             cycles = GameWorld.Instance.cycles;
@@ -85,6 +88,17 @@ namespace MinerConflict
                     {
                         break;
                     }
+                }
+            }
+        }
+
+        public void LoadContent(ContentManager content)
+        {
+            foreach (Component com in components)
+            {
+                if(com is ILoadeble)
+                {
+                    (com as ILoadeble).LoadContent(content); 
                 }
             }
         }
