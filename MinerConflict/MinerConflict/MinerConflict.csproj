@@ -53,6 +53,7 @@
     <Compile Include="Interfaces\IAnimateable.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="GoldMine.cs" />
+    <Compile Include="Interfaces\ILoadeble.cs" />
     <Compile Include="Interfaces\IUpdateable.cs" />
     <Compile Include="Miner.cs" />
     <Compile Include="Pikeman.cs" />
