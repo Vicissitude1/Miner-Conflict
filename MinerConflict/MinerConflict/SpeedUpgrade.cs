@@ -10,7 +10,7 @@ namespace MinerConflict
     {
         public static float speed;
 
-        public SpeedUpgrade()
+        public SpeedUpgrade(GameObject gameObject):base(gameObject)
         {
             speed = 4f;
         }

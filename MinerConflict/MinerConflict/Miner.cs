@@ -22,7 +22,7 @@ namespace MinerConflict
         public DIRECTION direction;
         private int collected;
 
-        public Miner ( int health, int collected)
+        public Miner ( int health, int collected, GameObject gameObject):base(gameObject)
         {
             this.health = health;
             this.collected = collected;
@@ -48,7 +48,7 @@ namespace MinerConflict
 
             direction = DIRECTION.Left;
 
-            animator.CreateAnimation("WalkLeft", new Animation(4, 65, 4, 61, 48, 6, Vector2.Zero));           
+            animator.CreateAnimation("WalkLeft", new Animation(4, 64, 4, 61, 48, 1, Vector2.Zero));           
 
             animator.PlayAnimation("WalkLeft");
         }
