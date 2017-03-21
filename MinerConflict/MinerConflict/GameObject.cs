@@ -42,7 +42,7 @@ namespace MinerConflict
 
         public void OnAnimationDone(string animationName)
         {
-            //FISK
+        //monkey.
         }
 
         public void Update()
