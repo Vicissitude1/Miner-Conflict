@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict
 {
-    class Miner : SpeedUpgrade, IUpdate
+    class Miner : SpeedUpgrade, IUpdate, ILoadable
     {
 
 
