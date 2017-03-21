@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MinerConflict.Builders
 {
-    class MinerBuilder
+    class MinerBuilder : IBuilder
     {
         private GameObject gameObject;
 
