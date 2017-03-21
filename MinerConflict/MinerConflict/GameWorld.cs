@@ -102,7 +102,10 @@ namespace MinerConflict
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             // TODO: Add your update logic here
 
-
+            foreach (GameObject obj in gameObjects)
+            {
+                obj.Update();
+            }
 
             cycles++;
 

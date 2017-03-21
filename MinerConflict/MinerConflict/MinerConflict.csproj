@@ -53,6 +53,7 @@
     <Compile Include="Interfaces\IAnimateable.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="GoldMine.cs" />
+    <Compile Include="Interfaces\IUpdateable.cs" />
     <Compile Include="Miner.cs" />
     <Compile Include="Pikeman.cs" />
     <Compile Include="Program.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="SpeedUpgrade.cs" />
     <Compile Include="SpriteRenderer.cs" />
     <Compile Include="Transform.cs" />
+    <Compile Include="UpdateTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

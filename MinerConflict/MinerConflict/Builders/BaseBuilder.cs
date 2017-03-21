@@ -15,6 +15,8 @@ namespace MinerConflict.Builders
             gameObject = new GameObject(position);
             gameObject.AddComponent(new SpriteRenderer(gameObject, Globals.Graphics.BaseBuildingTexture, 1f, 0.5f));
             gameObject.AddComponent(new Base(gameObject));
+
+            gameObject.AddComponent(new UpdateTester(gameObject));
         }
 
         public GameObject GetResult()
