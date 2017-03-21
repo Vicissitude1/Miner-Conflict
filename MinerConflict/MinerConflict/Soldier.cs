@@ -8,5 +8,11 @@ namespace MinerConflict
 {
     class Soldier
     {
+        public Animator animator;
+        public int health;
+        public DIRECTION direction;
+        private double cycles;
+        private int damege;
+
     }
 }
