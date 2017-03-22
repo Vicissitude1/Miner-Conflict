@@ -44,7 +44,7 @@ namespace MinerConflict
 
         public void OnAnimationDone(string animationName)
         {
-        //monkey.
+            //monkey.
         }
 
         public void Update()
@@ -72,7 +72,7 @@ namespace MinerConflict
             }
         }
 
-        
+
 
         private void ThreadUpdate()
         {
@@ -80,10 +80,11 @@ namespace MinerConflict
             while (true)
             {
                 if (cycles < GameWorld.Instance.cycles)
-                    {
+                {
                     try
                     {
                         triggerUpdate();
+                        cycles++;
                     } catch
                     {
                         break;
@@ -96,9 +97,9 @@ namespace MinerConflict
         {
             foreach (Component com in components)
             {
-                if(com is ILoadeble)
+                if (com is ILoadeble)
                 {
-                    (com as ILoadeble).LoadContent(content); 
+                    (com as ILoadeble).LoadContent(content);
                 }
             }
         }
