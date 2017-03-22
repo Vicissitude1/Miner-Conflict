@@ -30,7 +30,17 @@ namespace MinerConflict
                 }
                 notClicked[0] = false;
             } else { notClicked[0] = true; }
-
+            if (x.IsKeyDown(Keys.P))
+            {
+                if (notClicked[1])
+                {
+                    //Spawn another pikeman
+                }
+                notClicked[1] = false;
+            } else
+            {
+                notClicked[1] = true;
+            }
         }
     }
 }
