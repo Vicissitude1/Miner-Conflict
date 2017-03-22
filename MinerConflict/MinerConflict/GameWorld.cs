@@ -33,6 +33,23 @@ namespace MinerConflict
         public float deltaTime { get; private set; }
 
         private List<GameObject> gameObjects;
+        public static readonly object accessGameObjects = new object();
+        internal List<GameObject> GameObjects
+        {
+            get
+            {
+                lock (accessGameObjects)
+                {
+                    return gameObjects;
+                }
+            }
+        }
+
+
+        public static readonly object addUnit = new object();
+        private List<GameObject> addGameObjects;
+        public static readonly object removeUnit = new object();
+        private List<GameObject> removeGameObjects;
 
         private GameWorld()
         {
@@ -52,8 +69,8 @@ namespace MinerConflict
         {
             // TODO: Add your initialization logic here
             gameObjects = new List<GameObject>();
-
-            
+            addGameObjects = new List<GameObject>();
+            removeGameObjects = new List<GameObject>();
 
             base.Initialize();
         }
@@ -107,9 +124,16 @@ namespace MinerConflict
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             // TODO: Add your update logic here
 
-            foreach (GameObject obj in gameObjects)
+            lock (accessGameObjects)
             {
-                obj.Update();
+                foreach (GameObject obj in gameObjects)
+                {
+                    obj.Update();
+                }
+
+
+
+                SortGameObjects();
             }
 
             cycles++;
@@ -137,6 +161,48 @@ namespace MinerConflict
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        internal void AddUnit(GameObject obj)
+        {
+            lock (addUnit)
+            {
+                addGameObjects.Add(obj);
+            }
+        }
+
+        internal void RemoveUnit(GameObject obj)
+        {
+            lock (removeUnit)
+            {
+                removeGameObjects.Add(obj);
+            }
+        }
+
+        private void SortGameObjects()
+        {
+            lock (removeUnit)
+            {
+                if (removeGameObjects.Count > 0)
+                {
+                    foreach (GameObject obj in removeGameObjects)
+                    {
+                        gameObjects.Remove(obj);
+                    }
+                    removeGameObjects.Clear();
+                }
+            }
+            lock (addUnit)
+            {
+                if (addGameObjects.Count > 0)
+                {
+                    foreach (GameObject obj in addGameObjects)
+                    {
+                        gameObjects.Add(obj);
+                    }
+                    addGameObjects.Clear();
+                }
+            }
         }
     }
 }
