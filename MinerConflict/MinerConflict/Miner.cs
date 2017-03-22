@@ -46,12 +46,16 @@ namespace MinerConflict
                 }
             }
 
-            if (minerpos.transform.Position.X >= assocMine.transform.Position.X || minerpos.transform.Position.Y >= assocMine.transform.Position.Y)
-            {
+            //if (minerpos.transform.Position.X >= assocMine.transform.Position.X || minerpos.transform.Position.Y >= assocMine.transform.Position.Y)
+            //{
 
-                //gameObject.transform.Position.X += 0;
-                //gameObject.transform.Position.Y += -10;
-                gameObject.transform.Translate(new Vector2(0, +10 * GameWorld.Instance.deltaTime));
+               
+            //    gameObject.transform.Translate(new Vector2(0, +10 * GameWorld.Instance.deltaTime));
+            //}
+            if (collected <= 0)
+            {
+                gameObject.transform.Translate(new Vector2(0, -10 * GameWorld.Instance.deltaTime));
+
             }
             else if (collected > 0)
             {
