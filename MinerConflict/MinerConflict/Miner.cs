@@ -30,16 +30,16 @@ namespace MinerConflict
 
         public void Update()
         {
-            if(collected > 0)
-            {
+            //if(collected > 0)
+            //{
                
-                gameObject.transform.Translate(new Vector2(0, -10));
-            }
-            else if(collected <= 0)
-            {
-                gameObject.transform.Translate(new Vector2(0, +10));
+            //    gameObject.transform.Translate(new Vector2(0, -1));
+            //}
+            //else if(collected <= 0)
+            //{
+            //    gameObject.transform.Translate(new Vector2(0, +1));
 
-            }
+            //}
             
         }
 
