@@ -105,6 +105,9 @@ namespace MinerConflict
 
             dir = new Director(new MinerBuilder());
             gameObjects.Add(dir.Construct(new Vector2(20, 150)));
+
+            dir = new Director(new PikemanBuilder());
+            GameObjects.Add(dir.Construct(new Vector2(250, 10)));
             
 
             foreach (GameObject obj in gameObjects)

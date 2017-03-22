@@ -45,7 +45,7 @@ namespace MinerConflict
             animator = (Animator)gameObject.GetComponent("Animator");
             direction = DIRECTION.Left;
 
-            animator.CreateAnimation("WalkLeft", new Animation(6, 0, 0, 50, 58, 1f, new Vector2(-50, 10)));
+            animator.CreateAnimation("WalkLeft", new Animation(8, 0, 0, 100, 80, 8f, new Vector2(-50, 10)));
             animator.PlayAnimation("WalkLeft");
         }
     }
