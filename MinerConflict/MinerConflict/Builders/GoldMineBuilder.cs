@@ -10,7 +10,7 @@ namespace MinerConflict.Builders
     class GoldMineBuilder : IBuilder
     {
         private GameObject gameObject;
-
+      
 
         public void Buildpart(Vector2 position)
         {
