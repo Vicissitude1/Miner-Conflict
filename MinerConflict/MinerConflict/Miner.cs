@@ -26,13 +26,21 @@ namespace MinerConflict
         {
             this.health = health;
             this.collected = collected;
-
-
         }
 
         public void Update()
         {
+            //if(collected > 0)
+            //{
+               
+            //    gameObject.transform.Translate(new Vector2(0, -1));
+            //}
+            //else if(collected <= 0)
+            //{
+            //    gameObject.transform.Translate(new Vector2(0, +1));
 
+            //}
+            
         }
 
         public void Move(object obj)
@@ -40,16 +48,14 @@ namespace MinerConflict
             
         }
 
-
         public void LoadContent(ContentManager content)
         {
 
             animator = (Animator)gameObject.GetComponent("Animator");
-
             direction = DIRECTION.Left;
 
-            animator.CreateAnimation("WalkLeft", new Animation(4, 64, 4, 61, 48, 1, Vector2.Zero));           
-
+         // animator.CreateAnimation("WalkLeft", new Animation(4, 64, 4, 61, 48, 1, Vector2.Zero));           
+            animator.CreateAnimation("WalkLeft", new Animation(6, 0, 0, 50, 58, 1f, new Vector2(-50,10)));
             animator.PlayAnimation("WalkLeft");
         }
 
