@@ -10,42 +10,38 @@ namespace MinerConflict
 {
     class GoldMine : Component
     {
-        private static Object thisLock = new Object();
+        private object thisLock = new Object();
         private int amountCollected;
         private bool working;
-       
+
 
         private int goldAmount;
 
         public GoldMine(GameObject gameObject, int goldAmount) : base(gameObject)
         {
             this.goldAmount = goldAmount;
-            working = false;         
+            working = false;
 
         }
-        
 
-        public void Collect(object obj)
+
+        public int Collect(int amount)
         {
-            
-            while (working == true)
+            lock (thisLock)
             {
-
-                int amount = (int)obj;
-                lock (thisLock)
-                    if (amount > goldAmount)
-                    {
-                        amount = 1;
-                        Thread.Sleep(1500);
-                        goldAmount =- amount;
-                        working = false;
-                    }
-                    else
-                    {
-                        Thread.Sleep(1500);
-                        goldAmount =- amount;
-                        working = false;
-                    }
+                if (amount > goldAmount)
+                {
+                    Thread.Sleep(1500);
+                    int whatsLeft = goldAmount;
+                    goldAmount = 0;
+                    return whatsLeft;
+                }
+                else
+                {
+                    Thread.Sleep(1500);
+                    goldAmount -= amount;
+                    return amount;
+                }
             }
         }
 
