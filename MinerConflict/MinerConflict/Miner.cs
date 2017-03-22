@@ -67,8 +67,7 @@ namespace MinerConflict
                     gameObject.transform.Translate(translation * GameWorld.Instance.deltaTime * 40/*speed*/);
                 } else if (collected <= 0)
                 {
-                     
-                    collected = 50; //change this later
+                    collected = (assocMine.GetComponent("GoldMine") as GoldMine).Collect(50);
                 } else if (gameObject.transform.Position.Y > assocBase.transform.Position.Y && collected > 0)
                 {
                     Vector2 translation = assocBase.transform.Position - gameObject.transform.Position;
@@ -76,7 +75,7 @@ namespace MinerConflict
                     gameObject.transform.Translate(translation * GameWorld.Instance.deltaTime * 40/*speed*/);
                 } else
                 {
-                    collected = 0;
+                    collected = 0; //Add to some common resource
                 }
             }
 
