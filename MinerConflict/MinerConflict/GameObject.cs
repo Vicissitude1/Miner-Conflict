@@ -69,7 +69,7 @@ namespace MinerConflict
                     updateThread.IsBackground = true;
                     updateThread.Start();
                 }
-            }
+            } else if (!updateThread.IsAlive) { }
         }
 
 
@@ -87,6 +87,8 @@ namespace MinerConflict
                         cycles++;
                     } catch
                     {
+                        Console.WriteLine("An error occured");
+                        Console.ReadKey();
                         break;
                     }
                 }
