@@ -14,7 +14,7 @@ namespace MinerConflict.Builders
         public void Buildpart(Vector2 position)
         {
             gameObject = new GameObject(position);
-            gameObject.AddComponent(new SpriteRenderer(gameObject, Globals.Graphics.MinerUnitTexture, 1f, 1.5f));
+            gameObject.AddComponent(new SpriteRenderer(gameObject, Globals.Graphics.MinerWalkTexture, 1f, 1.5f));
             gameObject.AddComponent(new Animator(gameObject));
             gameObject.AddComponent(new Miner(50, 0, gameObject));
         }
