@@ -17,7 +17,7 @@ namespace MinerConflict
         private List<Component> components;
         public Transform transform { get; private set; }
 
-        private Thread updateThread;
+        public Thread updateThread;
         private bool alreadyChecked;
         private delegate void updateDelegate();
         private List<updateDelegate> delegates;
@@ -85,6 +85,7 @@ namespace MinerConflict
                     try
                     {
                         triggerUpdate();
+                        updateThread.Join(10);
                         cycles++;
                     } catch
                     {
