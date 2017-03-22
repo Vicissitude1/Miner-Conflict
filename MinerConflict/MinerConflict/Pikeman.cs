@@ -23,21 +23,11 @@ namespace MinerConflict
             this.damege = damege;
         }
 
-        public void update()
-        {
-
-        }
-
-        public void Move(object obj)
-        {
-
-        }
-
       
 
         public void Update()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void LoadContent(ContentManager content)
