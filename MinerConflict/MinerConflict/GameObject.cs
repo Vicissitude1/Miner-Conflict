@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
+using System.Diagnostics;
 
 namespace MinerConflict
 {
@@ -69,7 +70,7 @@ namespace MinerConflict
                     updateThread.IsBackground = true;
                     updateThread.Start();
                 }
-            } else if (!updateThread.IsAlive) { }
+            }
         }
 
 
@@ -87,8 +88,7 @@ namespace MinerConflict
                         cycles++;
                     } catch
                     {
-                        Console.WriteLine("An error occured");
-                        Console.ReadKey();
+                        GameWorld.Instance.RemoveUnit(this);
                         break;
                     }
                 }
