@@ -67,6 +67,7 @@ namespace MinerConflict
                     gameObject.transform.Translate(translation * GameWorld.Instance.deltaTime * 40/*speed*/);
                 } else if (collected <= 0)
                 {
+                     
                     collected = 50; //change this later
                 } else if (gameObject.transform.Position.Y > assocBase.transform.Position.Y && collected > 0)
                 {
