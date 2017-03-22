@@ -31,7 +31,7 @@ namespace MinerConflict
 
             timeElapsed += GameWorld.Instance.deltaTime;
 
-            currentIndex += (int)(timeElapsed * fps);
+            currentIndex = (int)(timeElapsed * fps);
 
             if (currentIndex > rectangles.Length - 1)
             {
