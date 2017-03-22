@@ -21,29 +21,62 @@ namespace MinerConflict
         public int health;
         public DIRECTION direction;
         private int collected;
+        private GameObject assocMine;
+        private GameObject assocBase;
+    
 
-        public Miner ( int health, int collected, GameObject gameObject) : base(gameObject)
+        public Miner ( int health, GameObject gameObject) : base(gameObject)
         {
             this.health = health;
-            this.collected = collected;
+            this.collected = 0;
+            
         }
 
         public void Update()
         {
-            if (collected <= 0)
+            if (assocMine == null && assocBase == null)
             {
-                this.gameObject.transform.Translate(new Vector2());
-
-                gameObject.transform.Translate(new Vector2(0, -10 * GameWorld.Instance.deltaTime));
-            }
-            else if (collected > 0)
+                if (assocMine == null)
+                {
+                    foreach (GameObject obj in GameWorld.Instance.GameObjects)
+                    {
+                        if (obj.GetComponent("GoldMine") is GoldMine)
+                        {
+                            assocMine = obj;
+                            break;
+                        }
+                    }
+                }
+                if (assocBase == null)
+                {
+                    foreach (GameObject obj in GameWorld.Instance.GameObjects)
+                    {
+                        if (obj.GetComponent("Base") is Base)
+                        {
+                            assocBase = obj;
+                            break;
+                        }
+                    }
+                }
+            } else
             {
-                gameObject.transform.Translate(new Vector2(0, +10 * GameWorld.Instance.deltaTime));
-
-            }
-            else
-            {
-                gameObject.transform.Translate(new Vector2(0, 0 * GameWorld.Instance.deltaTime));
+                if (gameObject.transform.Position.Y < assocMine.transform.Position.Y && collected <= 0)
+                {
+                    Vector2 translation = assocMine.transform.Position - gameObject.transform.Position;
+                    translation.Normalize();
+                    gameObject.transform.Translate(translation * GameWorld.Instance.deltaTime * 40/*speed*/);
+                } else if (collected <= 0)
+                {
+                    collected = 50; //change this later
+                } else if (gameObject.transform.Position.Y > assocBase.transform.Position.Y && collected > 0)
+                {
+                    Vector2 translation = assocBase.transform.Position - gameObject.transform.Position;
+                    translation.Normalize();
+                    gameObject.transform.Translate(translation * GameWorld.Instance.deltaTime * 40/*speed*/);
+                } else
+                {
+                    collected = 0;
+                }
             }
 
         }

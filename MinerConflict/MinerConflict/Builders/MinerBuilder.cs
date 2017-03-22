@@ -16,7 +16,7 @@ namespace MinerConflict.Builders
             gameObject = new GameObject(position);
             gameObject.AddComponent(new SpriteRenderer(gameObject, Globals.Graphics.MinerWalkTexture, 1f, 1.5f));
             gameObject.AddComponent(new Animator(gameObject));
-            gameObject.AddComponent(new Miner(50, 0, gameObject));
+            gameObject.AddComponent(new Miner(50, gameObject));
         }
 
         public GameObject GetResult()

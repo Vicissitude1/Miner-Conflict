@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using MinerConflict.Builders;
 using MinerConflict.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -20,13 +22,15 @@ namespace MinerConflict
 
         public void Update()
         {
+            //20 150 miner
             KeyboardState x = Keyboard.GetState();
 
             if (x.IsKeyDown(Keys.M))
             {
                 if (notClicked[0])
                 {
-                    //Spawn another miner
+                    Director dir = new Director(new MinerBuilder());
+                    GameWorld.Instance.AddUnit(dir.Construct(new Vector2(20, 120)));
                 }
                 notClicked[0] = false;
             } else { notClicked[0] = true; }
