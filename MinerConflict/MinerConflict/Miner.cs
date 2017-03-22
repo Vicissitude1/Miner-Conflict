@@ -78,6 +78,7 @@ namespace MinerConflict
                     collected = 0;
                 }
             }
+
         }
 
         public void Move(object obj)
