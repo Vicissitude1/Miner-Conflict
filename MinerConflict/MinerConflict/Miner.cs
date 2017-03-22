@@ -22,7 +22,7 @@ namespace MinerConflict
         public DIRECTION direction;
         private int collected;
 
-        public Miner ( int health, int collected, GameObject gameObject):base(gameObject)
+        public Miner ( int health, int collected, GameObject gameObject) : base(gameObject)
         {
             this.health = health;
             this.collected = collected;
@@ -30,17 +30,22 @@ namespace MinerConflict
 
         public void Update()
         {
-            //if(collected > 0)
-            //{
-               
-            //    gameObject.transform.Translate(new Vector2(0, -1));
-            //}
-            //else if(collected <= 0)
-            //{
-            //    gameObject.transform.Translate(new Vector2(0, +1));
+            if (collected <= 0)
+            {
+                this.gameObject.transform.Translate(new Vector2());
 
-            //}
-            
+                gameObject.transform.Translate(new Vector2(0, -10 * GameWorld.Instance.deltaTime));
+            }
+            else if (collected > 0)
+            {
+                gameObject.transform.Translate(new Vector2(0, +10 * GameWorld.Instance.deltaTime));
+
+            }
+            else
+            {
+                gameObject.transform.Translate(new Vector2(0, 0 * GameWorld.Instance.deltaTime));
+            }
+
         }
 
         public void Move(object obj)
@@ -55,7 +60,7 @@ namespace MinerConflict
             direction = DIRECTION.Left;
 
          // animator.CreateAnimation("WalkLeft", new Animation(4, 64, 4, 61, 48, 1, Vector2.Zero));           
-            animator.CreateAnimation("WalkLeft", new Animation(6, 0, 0, 50, 58, 1f, new Vector2(-50,10)));
+            animator.CreateAnimation("WalkLeft", new Animation(6, 0, 0, 50, 58, 6f, new Vector2(-50,10)));
             animator.PlayAnimation("WalkLeft");
         }
 

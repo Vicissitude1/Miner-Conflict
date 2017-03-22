@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,29 +11,23 @@ namespace MinerConflict
     class GoldMine : Component
     {
         private static Object thisLock = new Object();
-        private string instance = null;
         private int amountCollected;
         private bool working;
+       
 
         private int goldAmount;
 
         public GoldMine(GameObject gameObject, int goldAmount) : base(gameObject)
         {
             this.goldAmount = goldAmount;
-            working = false;
+            working = false;         
 
-            if(instance == null)
-            {
-                Thread t = new Thread(new ParameterizedThreadStart(Collect));
-                t.IsBackground = true;
-                t.Start(15);
-               
-
-            }
         }
+        
 
         public void Collect(object obj)
         {
+            
             while (working == true)
             {
 
@@ -44,16 +39,12 @@ namespace MinerConflict
                         Thread.Sleep(1500);
                         goldAmount =- amount;
                         working = false;
-
                     }
                     else
                     {
-
                         Thread.Sleep(1500);
                         goldAmount =- amount;
                         working = false;
-
-
                     }
             }
         }
