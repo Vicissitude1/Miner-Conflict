@@ -208,6 +208,7 @@ namespace MinerConflict
                 {
                     foreach (GameObject obj in addGameObjects)
                     {
+                        obj.LoadContent(this.Content);
                         gameObjects.Add(obj);
                     }
                     addGameObjects.Clear();
