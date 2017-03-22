@@ -22,7 +22,7 @@ namespace MinerConflict
         public DIRECTION direction;
         private int collected;
 
-        public Miner ( int health, int collected, GameObject gameObject):base(gameObject)
+        public Miner ( int health, int collected, GameObject gameObject) : base(gameObject)
         {
             this.health = health;
             this.collected = collected;
