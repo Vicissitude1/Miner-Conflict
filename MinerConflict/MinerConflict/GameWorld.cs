@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MinerConflict.Builders;
+using System;
 using System.Collections.Generic;
 
 namespace MinerConflict
@@ -12,18 +13,27 @@ namespace MinerConflict
     public class GameWorld : Game
     {
         private static GameWorld instance;
+        private static object syncRoot = new object();
         public static GameWorld Instance
         {
             get
             {
                 if(instance == null)
                 {
-                    instance = new GameWorld();
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new GameWorld();
+                        }
+                    }
                 }
 
                 return instance;
             }
         }
+
+        
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
