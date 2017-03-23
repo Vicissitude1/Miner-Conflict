@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MinerConflict
@@ -13,17 +14,21 @@ namespace MinerConflict
     class Base:Component, IUpdate
     {
         private bool[] notClicked;
+        private Semaphore MySemaphore = new Semaphore(0, 4);
+        private static int amount = 0;
 
         public Base(GameObject gameObject) : base(gameObject)
         {
             notClicked = new bool[2];
             for (int i = 0; i > notClicked.Length; i++) { notClicked[i] = true; }
+            MySemaphore.Release(4);
         }
 
         public void Update()
         {
             //20 150 miner
             KeyboardState x = Keyboard.GetState();
+          
 
             if (x.IsKeyDown(Keys.M))
             {
@@ -45,6 +50,17 @@ namespace MinerConflict
             {
                 notClicked[1] = true;
             }
+        }
+
+        public int Deposit(int collected)
+        {
+
+            MySemaphore.WaitOne();
+            Thread.Sleep(3000);
+            amount += collected;
+            collected = 0;
+            MySemaphore.Release();
+            return collected;
         }
     }
 }
