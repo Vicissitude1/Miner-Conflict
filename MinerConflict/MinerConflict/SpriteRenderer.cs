@@ -15,7 +15,7 @@ namespace MinerConflict
         private Texture2D sprite;
         private Vector2 offset;
         private Rectangle rectangle;
-        private float scaleFactor;
+        public float scaleFactor { get; private set; }
         public SpriteEffects spriteEffect { get; set; }
         public Color colour { get; set; }
 

@@ -25,6 +25,7 @@ namespace MinerConflict
             private static Texture2D pikemanUnitTexture;
             private static Texture2D minerWalkTexture;
             private static Texture2D pikemanWalkTexture;
+            private static Texture2D collisionTexture;
 
             public static Texture2D MinerUnitTexture { get { return minerUnitTexture; } }
             public static Texture2D MineBuildingTexture { get { return mineBuildingTexture; } }
@@ -32,6 +33,7 @@ namespace MinerConflict
             public static Texture2D PikemanUnitTexture { get { return pikemanUnitTexture; } }
             public static Texture2D MinerWalkTexture { get { return minerWalkTexture; } }
             public static Texture2D PikemanWalkTexture { get { return pikemanWalkTexture; } }
+            public static Texture2D CollisionTexture { get { return collisionTexture; } }
 
             public static void LoadAllGraphics(ContentManager content)
             {
@@ -41,6 +43,7 @@ namespace MinerConflict
                 pikemanUnitTexture = content.Load<Texture2D>("pikemanUnit");
                 minerWalkTexture = content.Load<Texture2D>("MinerWalk");
                 pikemanWalkTexture = content.Load<Texture2D>("PikemanWalk");
+                collisionTexture = content.Load<Texture2D>("CollisionTexture");
             }
 
             /*

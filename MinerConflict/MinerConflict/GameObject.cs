@@ -8,11 +8,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MinerConflict
 {
     //You are raider! Legendary!
-    class GameObject:Component, IAnimateable, IUpdate, ILoadeble
+    class GameObject:Component, IAnimateable, IUpdate, ILoadeble, IDrawable
     {
         private List<Component> components;
         public Transform transform { get; private set; }
@@ -128,6 +129,17 @@ namespace MinerConflict
                 if (com is ILoadeble)
                 {
                     (com as ILoadeble).LoadContent(content);
+                }
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (Component com in components)
+            {
+                if (com is IDrawable)
+                {
+                    (com as IDrawable).Draw(spriteBatch);
                 }
             }
         }

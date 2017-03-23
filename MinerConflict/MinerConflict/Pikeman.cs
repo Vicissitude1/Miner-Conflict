@@ -12,7 +12,6 @@ namespace MinerConflict
 {
     class Pikeman : Component, IUpdate, ILoadeble
     {
-        private string instance;
         public Animator animator;
         public int health;
         public DIRECTION direction;

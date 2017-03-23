@@ -55,6 +55,22 @@ namespace MinerConflict
             }
         }
 
+        private List<Collider> colliders;
+        public static object colliderLock = new object();
+        internal List<Collider> Colliders
+        {
+            get
+            {
+                return colliders;
+            }
+            set
+            {
+                lock (colliderLock)
+                {
+                    colliders = value;
+                }
+            }
+        }
 
         public static readonly object addUnit = new object();
         private List<GameObject> addGameObjects;
@@ -81,6 +97,7 @@ namespace MinerConflict
             gameObjects = new List<GameObject>();
             addGameObjects = new List<GameObject>();
             removeGameObjects = new List<GameObject>();
+            colliders = new List<Collider>();
 
             base.Initialize();
         }
@@ -170,10 +187,7 @@ namespace MinerConflict
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             foreach (GameObject go in gameObjects)
             {
-                if (go.GetComponent("SpriteRenderer") is SpriteRenderer)
-                {
-                    (go.GetComponent("SpriteRenderer") as SpriteRenderer).Draw(spriteBatch);
-                }
+                go.Draw(spriteBatch);
             }
             spriteBatch.End();
 

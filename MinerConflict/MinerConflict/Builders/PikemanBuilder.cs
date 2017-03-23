@@ -16,6 +16,7 @@ namespace MinerConflict.Builders
             gameObject = new GameObject(position);
             gameObject.AddComponent(new SpriteRenderer(gameObject, Globals.Graphics.PikemanWalkTexture, 1f, 1.5f));
             gameObject.AddComponent(new Animator(gameObject));
+            gameObject.AddComponent(new Collider(gameObject, 0.6f));
             gameObject.AddComponent(new Pikeman(50, 10, gameObject));
         }
 
