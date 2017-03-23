@@ -40,6 +40,8 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Animator.cs" />
+    <Compile Include="Builders\EnemyBaseBuilder.cs" />
+    <Compile Include="EnemyBase.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="Builders\BaseBuilder.cs" />
     <Compile Include="Builders\GoldMineBuilder.cs" />

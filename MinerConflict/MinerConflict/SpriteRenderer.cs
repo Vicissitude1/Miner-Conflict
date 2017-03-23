@@ -17,6 +17,7 @@ namespace MinerConflict
         private Rectangle rectangle;
         private float scaleFactor;
         public SpriteEffects spriteEffect { get; set; }
+        public Color colour { get; set; }
 
         public Rectangle Rectangle
         {
@@ -37,11 +38,12 @@ namespace MinerConflict
             this.spriteEffect = SpriteEffects.None;
             this.rectangle = sprite.Bounds;
             this.scaleFactor = scaleFactor;
+            this.colour = Color.White;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, gameObject.transform.Position, rectangle, Color.White, 0, Vector2.Zero, scaleFactor, spriteEffect, layer);
+            spriteBatch.Draw(sprite, gameObject.transform.Position, rectangle, colour, 0, Vector2.Zero, scaleFactor, spriteEffect, layer);
         }
     }
 }

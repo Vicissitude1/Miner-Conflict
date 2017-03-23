@@ -68,6 +68,30 @@ namespace MinerConflict
                     }
                     updateThread = new Thread(ThreadUpdate);
                     updateThread.IsBackground = true;
+                    Random rnd = new Random();
+                    foreach (Component obj in components)
+                    {
+                        if (obj is Pikeman)
+                        {
+                            updateThread.Name = "Pikeman: " + rnd.Next(0, 10000);
+                        }
+                        if (obj is Miner)
+                        {
+                            updateThread.Name = "Miner: " + rnd.Next(0, 10000);
+                        }
+                        if (obj is Base)
+                        {
+                            updateThread.Name = "Base: " + rnd.Next(0, 10000);
+                        }
+                        if (obj is GoldMine)
+                        {
+                            updateThread.Name = "Goldmine: " + rnd.Next(0, 10000);
+                        }
+                        if (obj is EnemyBase)
+                        {
+                            updateThread.Name = "EnemyBase: " + rnd.Next(0, 10000);
+                        }
+                    }
                     updateThread.Start();
                 }
             }
@@ -89,6 +113,7 @@ namespace MinerConflict
                         cycles++;
                     } catch
                     {
+                        Debug.WriteLine(updateThread.Name);
                         GameWorld.Instance.RemoveUnit(this);
                         break;
                     }

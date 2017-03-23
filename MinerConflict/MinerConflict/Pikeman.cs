@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using MinerConflict.Interfaces;
+using Microsoft.Xna.Framework.Input;
 
 namespace MinerConflict
 {
@@ -27,7 +28,7 @@ namespace MinerConflict
 
         public void Update()
         {
-           
+            gameObject.transform.Translate(new Vector2(30 * GameWorld.Instance.deltaTime, 0));
         }
 
         public void LoadContent(ContentManager content)
