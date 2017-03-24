@@ -128,9 +128,10 @@ namespace MinerConflict
 
             dir = new Director(new MinerBuilder());
             gameObjects.Add(dir.Construct(new Vector2(20, 150)));
+            
 
-            dir = new Director(new InfoBuilder());
-            GameObjects.Add(dir.Construct(Vector2.Zero));
+            dir = new Director(new EnemyBuilder());
+            GameObjects.Add(dir.Construct(new Vector2(1250, 20)));
             
 
             foreach (GameObject obj in gameObjects)
