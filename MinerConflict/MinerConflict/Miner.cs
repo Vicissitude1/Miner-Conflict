@@ -75,7 +75,6 @@ namespace MinerConflict
                     gameObject.transform.Translate(translation * GameWorld.Instance.deltaTime * 40/*speed*/);
                 } else
                 {
-                    collected = 0; //Add to some common resource
                     collected = (assocBase.GetComponent("Base") as Base).Deposit(collected);
                 }
             }

@@ -16,6 +16,7 @@ namespace MinerConflict
         private bool[] notClicked;
         private Semaphore MySemaphore = new Semaphore(0, 4);
         private static int amount = 0;
+        private Info info;
 
         public Base(GameObject gameObject) : base(gameObject)
         {
@@ -28,14 +29,21 @@ namespace MinerConflict
         {
             //20 150 miner
             KeyboardState x = Keyboard.GetState();
-          
+            if (info == null)
+            {
+                GameObject temp = GameWorld.Instance.GameObjects.Find(g => g.GetComponent("Info") is Info);
+                info = (temp.GetComponent("Info") as Info);
+            }
 
             if (x.IsKeyDown(Keys.M))
             {
                 if (notClicked[0])
                 {
-                    Director dir = new Director(new MinerBuilder());
-                    GameWorld.Instance.AddUnit(dir.Construct(new Vector2(20, 120)));
+                    if (info.TransactGod(-150))
+                    {
+                        Director dir = new Director(new MinerBuilder());
+                        GameWorld.Instance.AddUnit(dir.Construct(new Vector2(20, 120)));
+                    }
                 }
                 notClicked[0] = false;
             } else { notClicked[0] = true; }
@@ -43,8 +51,11 @@ namespace MinerConflict
             {
                 if (notClicked[1])
                 {
-                    Director dir = new Director(new PikemanBuilder());
-                    GameWorld.Instance.AddUnit(dir.Construct(new Vector2(160, 30)));
+                    if (info.TransactGod(-250))
+                    {
+                        Director dir = new Director(new PikemanBuilder());
+                        GameWorld.Instance.AddUnit(dir.Construct(new Vector2(160, 30)));
+                    }
                 }
                 notClicked[1] = false;
             } else
@@ -58,8 +69,14 @@ namespace MinerConflict
 
             MySemaphore.WaitOne();
             Thread.Sleep(3000);
-            amount += collected;
-            collected = 0;
+            while (true)
+            {
+                if (info.TransactGod(collected))
+                {
+                    collected = 0;
+                    break;
+                }
+            }
             MySemaphore.Release();
             return collected;
         }

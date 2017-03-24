@@ -41,6 +41,8 @@
     <Compile Include="Animation.cs" />
     <Compile Include="Animator.cs" />
     <Compile Include="Builders\EnemyBaseBuilder.cs" />
+    <Compile Include="Builders\InfoBuilder.cs" />
+    <Compile Include="Info.cs" />
     <Compile Include="Collider.cs" />
     <Compile Include="EnemyBase.cs" />
     <Compile Include="Base.cs" />

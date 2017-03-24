@@ -77,12 +77,15 @@ namespace MinerConflict
         public static readonly object removeUnit = new object();
         private List<GameObject> removeGameObjects;
 
+        private bool wonGame;
+
         private GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = 512;
             graphics.PreferredBackBufferWidth = 1536;
             Content.RootDirectory = "Content";
+            wonGame = false;
         }
 
         /// <summary>
@@ -122,13 +125,12 @@ namespace MinerConflict
 
             dir = new Director(new GoldMineBuilder());
             gameObjects.Add(dir.Construct(new Vector2(20, 370)));
-           
 
             dir = new Director(new MinerBuilder());
             gameObjects.Add(dir.Construct(new Vector2(20, 150)));
 
-            dir = new Director(new PikemanBuilder());
-            GameObjects.Add(dir.Construct(new Vector2(160, 30)));
+            dir = new Director(new InfoBuilder());
+            GameObjects.Add(dir.Construct(Vector2.Zero));
             
 
             foreach (GameObject obj in gameObjects)
@@ -171,6 +173,11 @@ namespace MinerConflict
             }
 
             cycles++;
+
+            if (!gameObjects.Exists(x => x.GetComponent("EnemyBase") is EnemyBase) && wonGame == false)
+            {
+                wonGame = true;
+            }
 
             base.Update(gameTime);
         }

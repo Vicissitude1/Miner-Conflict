@@ -121,3 +121,9 @@
 /processorParam:TextureFormat=Color
 /build:PikemanWalkBlue.png
 
+#begin Font2.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Font2.spritefont
+
