@@ -218,6 +218,10 @@ namespace MinerConflict
                 {
                     foreach (GameObject obj in removeGameObjects)
                     {
+                        if (obj.GetComponent("Collider") is Collider)
+                        {
+                            colliders.Remove((obj.GetComponent("Collider") as Collider));
+                        }
                         gameObjects.Remove(obj);
                     }
                     removeGameObjects.Clear();

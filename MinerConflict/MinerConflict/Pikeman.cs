@@ -16,18 +16,23 @@ namespace MinerConflict
         public int health;
         public DIRECTION direction;
         public int damege;
+        public bool canwalk;
 
         public Pikeman(int health, int damege, GameObject gameObject) : base(gameObject)
         {
             this.health = health;
             this.damege = damege;
+            canwalk = true;
         }
 
       
 
         public void Update()
         {
-            gameObject.transform.Translate(new Vector2(30 * GameWorld.Instance.deltaTime, 0));
+            if (canwalk)
+            {
+                gameObject.transform.Translate(new Vector2(100 * GameWorld.Instance.deltaTime, 0));
+            }
         }
 
         public void LoadContent(ContentManager content)

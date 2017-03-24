@@ -10,7 +10,7 @@ using MinerConflict.Interfaces;
 
 namespace MinerConflict
 {
-    class Collider:Component, IDrawable, ILoadeble
+    class Collider:Component, IDrawable, ILoadeble, IUpdate
     {
         private SpriteRenderer spriteRenderer;
         private Texture2D texture;
@@ -18,6 +18,7 @@ namespace MinerConflict
         private List<Collider> otherColliders;
         private float centerPercent;
         public string ownerType;
+        private Component assocType;
 
         public Collider(GameObject gameObject, float centerPercent) : base(gameObject)
         {
@@ -57,10 +58,10 @@ namespace MinerConflict
         public void LoadContent(ContentManager content)
         {
             texture = Globals.Graphics.CollisionTexture;
-            if (gameObject.GetComponent("Base") is Base) { ownerType = "Base"; }
-            if (gameObject.GetComponent("EnemyBase") is EnemyBase) { ownerType = "EnemyBase"; }
-            if (gameObject.GetComponent("Pikeman") is Pikeman) { ownerType = "Pikeman"; }
-            //if (gameObject.GetComponent("EnemyPikeman") is EnemyPikeman) { ownerType = "EnemyPikeman"; }
+            if (gameObject.GetComponent("Base") is Base) { ownerType = "Base"; assocType = gameObject.GetComponent("Base"); }
+            if (gameObject.GetComponent("EnemyBase") is EnemyBase) { ownerType = "EnemyBase"; assocType = gameObject.GetComponent("EnemyBase"); }
+            if (gameObject.GetComponent("Pikeman") is Pikeman) { ownerType = "Pikeman"; assocType = gameObject.GetComponent("Pikeman"); doCollisionCheck = true; }
+            //if (gameObject.GetComponent("EnemyPikeman") is EnemyPikeman) { ownerType = "EnemyPikeman"; assocType = gameObject.GetComponent("EnemyPikeman"); }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -88,12 +89,28 @@ namespace MinerConflict
             {
                 if (ownerType == "Pikeman")
                 {
+                    bool collides = false;
                     foreach (Collider col in GameWorld.Instance.Colliders)
                     {
-                        if (col.ownerType == "EnemyBase")
+                        if (col.ownerType != "Pikeman")
                         {
-                            //
+                            if (GetCollisionBox.Intersects(col.GetCollisionBox))
+                            {
+                                collides = true;
+                                if (col.ownerType == "EnemyBase")
+                                {
+                                    (col.gameObject.GetComponent("EnemyBase") as EnemyBase).TakeDamage((assocType as Pikeman).damege);
+                                }
+                            }
                         }
+                    }
+                    if (collides)
+                    {
+                        (assocType as Pikeman).canwalk = false;
+                    } 
+                    else
+                    {
+                        (assocType as Pikeman).canwalk = true;
                     }
                 }
             }

@@ -115,6 +115,10 @@ namespace MinerConflict
                     } catch
                     {
                         Debug.WriteLine(updateThread.Name);
+                        foreach (Component com in components)
+                        {
+                            if (com is Collider) { GameWorld.Instance.Colliders.Remove((com as Collider)); }
+                        }
                         GameWorld.Instance.RemoveUnit(this);
                         break;
                     }
