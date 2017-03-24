@@ -128,7 +128,7 @@ namespace MinerConflict
             gameObjects.Add(dir.Construct(new Vector2(20, 150)));
 
             dir = new Director(new PikemanBuilder());
-            GameObjects.Add(dir.Construct(new Vector2(250, 10)));
+            GameObjects.Add(dir.Construct(new Vector2(160, 30)));
             
 
             foreach (GameObject obj in gameObjects)
@@ -222,6 +222,7 @@ namespace MinerConflict
                         {
                             colliders.Remove((obj.GetComponent("Collider") as Collider));
                         }
+                        obj.AbortThread();
                         gameObjects.Remove(obj);
                     }
                     removeGameObjects.Clear();

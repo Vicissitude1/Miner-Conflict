@@ -31,7 +31,7 @@ namespace MinerConflict
         {
             if (canwalk)
             {
-                gameObject.transform.Translate(new Vector2(100 * GameWorld.Instance.deltaTime, 0));
+                gameObject.transform.Translate(new Vector2(30 * GameWorld.Instance.deltaTime, 0));
             }
         }
 

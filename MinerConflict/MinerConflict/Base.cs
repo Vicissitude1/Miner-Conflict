@@ -43,7 +43,8 @@ namespace MinerConflict
             {
                 if (notClicked[1])
                 {
-                    //Spawn another pikeman
+                    Director dir = new Director(new PikemanBuilder());
+                    GameWorld.Instance.AddUnit(dir.Construct(new Vector2(160, 30)));
                 }
                 notClicked[1] = false;
             } else

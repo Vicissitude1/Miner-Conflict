@@ -120,10 +120,16 @@ namespace MinerConflict
                             if (com is Collider) { GameWorld.Instance.Colliders.Remove((com as Collider)); }
                         }
                         GameWorld.Instance.RemoveUnit(this);
+                        updateThread.Abort();
                         break;
                     }
                 }
             }
+        }
+
+        public void AbortThread()
+        {
+            updateThread.Abort();
         }
 
         public void LoadContent(ContentManager content)
