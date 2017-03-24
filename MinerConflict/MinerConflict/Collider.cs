@@ -103,6 +103,10 @@ namespace MinerConflict
                                 {
                                     (col.gameObject.GetComponent("EnemyBase") as EnemyBase).TakeDamage((assocType as Pikeman).damege);
                                 }
+                                if (col.ownerType == "Enemy")
+                                {
+                                    (col.gameObject.GetComponent("Enemy") as Enemy).TakeDamage((assocType as Pikeman).damege);
+                                }
                             }
                         }
                     }
@@ -113,6 +117,31 @@ namespace MinerConflict
                     else
                     {
                         (assocType as Pikeman).canwalk = true;
+                    }
+                }
+                if (ownerType == "Enemy")
+                {
+                    bool collides = false;
+                    foreach (Collider col in GameWorld.Instance.Colliders)
+                    {
+                        if (col.ownerType != "Enemy" && col.ownerType != "EnemyBase")
+                        {
+                            if (GetCollisionBox.Intersects(col.GetCollisionBox))
+                            {
+                                collides = true;
+                                if (col.ownerType == "Pikeman")
+                                {
+                                    (col.gameObject.GetComponent("Pikeman") as Pikeman).TakeDamage((assocType as Enemy).damege);
+                                }
+                            }
+                        }
+                    }
+                    if (collides)
+                    {
+                        (assocType as Enemy).canwalk = false;
+                    } else
+                    {
+                        (assocType as Enemy).canwalk = true;
                     }
                 }
             }

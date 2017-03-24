@@ -21,6 +21,7 @@ namespace MinerConflict
         public Info(GameObject gameObject) : base(gameObject)
         {
             x = null;
+            gold = 200;
         }
 
         public void Update()

@@ -23,7 +23,7 @@ namespace MinerConflict
         public EnemyBase(GameObject gameObject) : base(gameObject)
         {
             checkedForGraphics = false;
-            time = 30;
+            time = 50;
             health = 2000;
             
         }
@@ -39,7 +39,7 @@ namespace MinerConflict
             time -= GameWorld.Instance.deltaTime;
             if (time <= 0)
             {
-                time = 15;
+                time = 20;
                 Director dir = new Director(new EnemyBuilder());
                 GameWorld.Instance.AddUnit(dir.Construct(new Vector2(1250, 30)));
             }

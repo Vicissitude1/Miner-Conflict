@@ -28,6 +28,7 @@ namespace MinerConflict
             this.damege = damege;
             canwalk = true;
             checkedForGraphics = false;
+            healthLock.Release(4);
         }
 
 
