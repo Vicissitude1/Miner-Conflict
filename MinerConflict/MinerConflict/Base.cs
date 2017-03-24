@@ -20,7 +20,7 @@ namespace MinerConflict
 
         public Base(GameObject gameObject) : base(gameObject)
         {
-            notClicked = new bool[2];
+            notClicked = new bool[3];
             for (int i = 0; i > notClicked.Length; i++) { notClicked[i] = true; }
             MySemaphore.Release(4);
         }
@@ -65,6 +65,21 @@ namespace MinerConflict
                 {
                     notClicked[1] = true;
                 }
+#if DEBUG
+                if (x.IsKeyDown(Keys.G))
+                {
+                    if (notClicked[2])
+                    {
+                        if (info.TransactGod(100))
+                        {
+                        }
+                    }
+                    notClicked[2] = false;
+                } else
+                {
+                    notClicked[2] = true;
+                }
+#endif
             }
         }
 

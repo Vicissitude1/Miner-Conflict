@@ -40,7 +40,8 @@ namespace MinerConflict
             if (time <= 0)
             {
                 time = 15;
-                Debug.WriteLine("Unit build!");
+                Director dir = new Director(new EnemyBuilder());
+                GameWorld.Instance.AddUnit(dir.Construct(new Vector2(1250, 30)));
             }
             if (health <= 0)
             {

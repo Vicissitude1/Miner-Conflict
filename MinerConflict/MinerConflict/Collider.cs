@@ -19,6 +19,7 @@ namespace MinerConflict
         private float centerPercent;
         public string ownerType;
         private Component assocType;
+        public Vector2 offRect;
 
         public Collider(GameObject gameObject, float centerPercent) : base(gameObject)
         {
@@ -26,6 +27,7 @@ namespace MinerConflict
             GameWorld.Instance.Colliders.Add(this);
             this.otherColliders = new List<Collider>();
             this.centerPercent = centerPercent;
+            offRect = Vector2.Zero;
         }
 
         public Rectangle GetCollisionBox
@@ -36,19 +38,19 @@ namespace MinerConflict
                 {
                     return new Rectangle
                     (
-                        (int)(gameObject.transform.Position.X + spriteRenderer.Offset.X),
-                        (int)(gameObject.transform.Position.Y + spriteRenderer.Offset.Y),
-                        (int)(spriteRenderer.Rectangle.Width * spriteRenderer.scaleFactor),
-                        (int)(spriteRenderer.Rectangle.Height * spriteRenderer.scaleFactor)
+                        (int)(gameObject.transform.Position.X + spriteRenderer.Offset.X + offRect.X),
+                        (int)(gameObject.transform.Position.Y + spriteRenderer.Offset.Y + offRect.Y),
+                        (int)((spriteRenderer.Rectangle.Width * spriteRenderer.scaleFactor) + offRect.X),
+                        (int)((spriteRenderer.Rectangle.Height * spriteRenderer.scaleFactor) + offRect.Y)
                     );
                 } else
                 {
                     return new Rectangle
                     (
-                        (int)(gameObject.transform.Position.X + spriteRenderer.Offset.X + (spriteRenderer.Rectangle.Width * spriteRenderer.scaleFactor * centerPercent / 2)),
-                        (int)(gameObject.transform.Position.Y + spriteRenderer.Offset.Y),
-                        (int)(spriteRenderer.Rectangle.Width * spriteRenderer.scaleFactor * centerPercent),
-                        (int)(spriteRenderer.Rectangle.Height * spriteRenderer.scaleFactor)
+                        (int)(gameObject.transform.Position.X + spriteRenderer.Offset.X + (spriteRenderer.Rectangle.Width * spriteRenderer.scaleFactor * centerPercent / 2) + offRect.X),
+                        (int)(gameObject.transform.Position.Y + spriteRenderer.Offset.Y + offRect.Y),
+                        (int)((spriteRenderer.Rectangle.Width * spriteRenderer.scaleFactor * centerPercent) + offRect.X),
+                        (int)((spriteRenderer.Rectangle.Height * spriteRenderer.scaleFactor) + offRect.Y)
                     );
                 }
 
@@ -61,7 +63,7 @@ namespace MinerConflict
             if (gameObject.GetComponent("Base") is Base) { ownerType = "Base"; assocType = gameObject.GetComponent("Base"); }
             if (gameObject.GetComponent("EnemyBase") is EnemyBase) { ownerType = "EnemyBase"; assocType = gameObject.GetComponent("EnemyBase"); }
             if (gameObject.GetComponent("Pikeman") is Pikeman) { ownerType = "Pikeman"; assocType = gameObject.GetComponent("Pikeman"); doCollisionCheck = true; }
-            //if (gameObject.GetComponent("EnemyPikeman") is EnemyPikeman) { ownerType = "EnemyPikeman"; assocType = gameObject.GetComponent("EnemyPikeman"); }
+            if (gameObject.GetComponent("Enemy") is Enemy) { ownerType = "Enemy"; assocType = gameObject.GetComponent("Enemy"); doCollisionCheck = true; }
         }
 
         public void Draw(SpriteBatch spriteBatch)
