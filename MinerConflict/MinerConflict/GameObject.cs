@@ -129,7 +129,10 @@ namespace MinerConflict
 
         public void AbortThread()
         {
-            updateThread.Abort();
+            try
+            {
+                updateThread.Abort();
+            } catch { }
         }
 
         public void LoadContent(ContentManager content)

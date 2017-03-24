@@ -78,6 +78,7 @@ namespace MinerConflict
         private List<GameObject> removeGameObjects;
 
         private bool wonGame;
+        private bool wonGameChecked;
 
         private GameWorld()
         {
@@ -86,6 +87,7 @@ namespace MinerConflict
             graphics.PreferredBackBufferWidth = 1536;
             Content.RootDirectory = "Content";
             wonGame = false;
+            wonGameChecked = false;
         }
 
         /// <summary>
@@ -162,22 +164,35 @@ namespace MinerConflict
 
             lock (accessGameObjects)
             {
+                if (!gameObjects.Exists(x => x.GetComponent("EnemyBase") is EnemyBase) && wonGame == false)
+                {
+                    wonGame = true;
+                    wonGameChecked = true;
+                }
+                if (wonGame && wonGameChecked)
+                {
+                    foreach (GameObject obj in gameObjects)
+                    {
+                        RemoveUnit(obj);
+                    }
+                    Director dire = new Director(new YouWonBuilder());
+                    AddUnit(dire.Construct(new Vector2(graphics.PreferredBackBufferWidth / 2 - Globals.Graphics.YouWonTexture.Width / 2, graphics.PreferredBackBufferHeight / 2 - Globals.Graphics.YouWonTexture.Height / 2)));
+                    wonGameChecked = false;
+                }
+
+
+
                 foreach (GameObject obj in gameObjects)
                 {
                     obj.Update();
                 }
-
-
 
                 SortGameObjects();
             }
 
             cycles++;
 
-            if (!gameObjects.Exists(x => x.GetComponent("EnemyBase") is EnemyBase) && wonGame == false)
-            {
-                wonGame = true;
-            }
+            
 
             base.Update(gameTime);
         }

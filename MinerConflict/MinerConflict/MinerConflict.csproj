@@ -42,6 +42,7 @@
     <Compile Include="Animator.cs" />
     <Compile Include="Builders\EnemyBaseBuilder.cs" />
     <Compile Include="Builders\InfoBuilder.cs" />
+    <Compile Include="Builders\YouWonBuilder.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="Builders\EnemyBuilder.cs" />
     <Compile Include="Collider.cs" />
