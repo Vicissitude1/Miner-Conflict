@@ -31,36 +31,40 @@ namespace MinerConflict
             KeyboardState x = Keyboard.GetState();
             if (info == null)
             {
-                GameObject temp = GameWorld.Instance.GameObjects.Find(g => g.GetComponent("Info") is Info);
-                info = (temp.GetComponent("Info") as Info);
-            }
-
-            if (x.IsKeyDown(Keys.M))
-            {
-                if (notClicked[0])
+                if (GameWorld.Instance.GameObjects.Exists(g => g.GetComponent("Info") is Info))
                 {
-                    if (info.TransactGod(-150))
-                    {
-                        Director dir = new Director(new MinerBuilder());
-                        GameWorld.Instance.AddUnit(dir.Construct(new Vector2(20, 120)));
-                    }
+                    GameObject temp = GameWorld.Instance.GameObjects.Find(g => g.GetComponent("Info") is Info);
+                    info = (temp.GetComponent("Info") as Info);
                 }
-                notClicked[0] = false;
-            } else { notClicked[0] = true; }
-            if (x.IsKeyDown(Keys.P))
-            {
-                if (notClicked[1])
-                {
-                    if (info.TransactGod(-250))
-                    {
-                        Director dir = new Director(new PikemanBuilder());
-                        GameWorld.Instance.AddUnit(dir.Construct(new Vector2(160, 30)));
-                    }
-                }
-                notClicked[1] = false;
             } else
             {
-                notClicked[1] = true;
+                if (x.IsKeyDown(Keys.M))
+                {
+                    if (notClicked[0])
+                    {
+                        if (info.TransactGod(-150))
+                        {
+                            Director dir = new Director(new MinerBuilder());
+                            GameWorld.Instance.AddUnit(dir.Construct(new Vector2(20, 120)));
+                        }
+                    }
+                    notClicked[0] = false;
+                } else { notClicked[0] = true; }
+                if (x.IsKeyDown(Keys.P))
+                {
+                    if (notClicked[1])
+                    {
+                        if (info.TransactGod(-250))
+                        {
+                            Director dir = new Director(new PikemanBuilder());
+                            GameWorld.Instance.AddUnit(dir.Construct(new Vector2(160, 30)));
+                        }
+                    }
+                    notClicked[1] = false;
+                } else
+                {
+                    notClicked[1] = true;
+                }
             }
         }
 
